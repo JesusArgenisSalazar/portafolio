@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+
+
+	<style type="text/css">
+		 
+    .contenedor{
+
+
+    	width: 100%;
+    	height: 250px;
+    	background-color: black;
+    	padding-top: 50px;
+
+
+
+    }
+
+    .contenedor__caja{
+
+
+    	width: 440px;
+    	height: 200px;
+    	background-color: white;
+    	margin: auto;
+    	position: relative;
+
+    }
+
+
+    
+
+    .contenedor__imagen{
+      
+      width: 200px;
+      height: 100%;
+      display: inline-block;
+      background-color: #48e;
+     
+    
+    }
+	
+    
+    .translada__cajaAdelante{
+        
+       animation-name: transladaAdelante;
+       animation-duration:1s;
+       animation-fill-mode: both;
+
+
+
+
+    }
+
+     .translada__cajaAdelante2{
+        
+       animation-name: transladaAdelanteF;
+       animation-duration:1s;
+       animation-direction: reverse;
+       animation-fill-mode: both;
+
+
+
+
+    }
+
+    .translada__cajaMasAdelante{
+
+       animation-name: transladaMasAdelante;
+       animation-fill-mode: both;
+       animation-duration: 1s;
+
+
+    }
+
+
+    .reversa{
+
+         animation-direction: reverse;
+
+    }
+
+   
+
+    .contenedor__contimg1{
+
+      width: 410px;
+      height: 100%;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: -430px;
+      border: 2px solid red;
+    }
+
+     .contenedor__contimg2{
+
+      width: 420px;
+      height: 100%;
+      display: inline-block;
+      position: absolute;
+      top: 0;
+      left: -430px;
+      border: 2px solid green;
+    }
+
+	
+	@keyframes transladaAdelanteF {
+
+        
+        0%{
+           
+            transform: translateX(0px);    
+        }
+
+        100%{
+
+             transform: translateX(450px);
+             
+        }
+	}
+
+
+  @keyframes transladaAdelante {
+
+        
+        0%{
+           
+            transform: translateX(0px);    
+        }
+
+        100%{
+
+             transform: translateX(450px);
+             
+        }
+  }
+
+
+	@keyframes transladaMasAdelante {
+
+        
+        0%{
+           
+            transform: translateX(450px); 
+             
+            
+            
+        }
+
+        99%{
+
+             transform: translateX(900px);
+            
+              
+        }
+
+        100%{
+
+        	 transform: translateX(0px);
+
+        }
+
+        
+	}
+
+
+
+
+
+
+	</style>
+</head>
+<body>
+   
+
+  <div class="contenedor">
+  	
+  	<div class="contenedor__caja">
+
+
+       <div class="contenedor__contimg1">
+  	   <div src="proyect2.png" style="background: red" class="contenedor__imagen">1</div>
+  	   <div src="proyect1.png" style="background: blue"class="contenedor__imagen contenedor__imagen-2">2</div>
+       </div>
+
+       <div class="contenedor__contimg2">
+       <div src="proyect2.png" style="background: yellow"class="contenedor__imagen">3</div>
+  	   <div src="proyect1.png" style="background: green"class="contenedor__imagen contenedor__imagen-2">4</div>
+       </div>
+
+  	</div>
+
+  	 <button class="contenedor__boton">adelante</button>
+  	 <button class="contenedor__boton2">atras</button>
+
+  </div>
+
+
+  
+
+  <script type="text/javascript">
+  	
+     
+        let boton = document.querySelector(".contenedor__boton");
+        let boton2 = document.querySelector(".contenedor__boton2");
+        let caja1 = document.querySelector(".contenedor__contimg1");
+        let caja2 = document.querySelector(".contenedor__contimg2");
+
+        let contador1 = 0;
+        let contador2 = 0;
+        let libre = true;
+
+        boton.addEventListener("click",function(e){
+                  
+                 
+             
+             caja1.classList.remove("reversa");
+             caja2.classList.remove("reversa");
+             caja1.classList.add("translada__cajaAdelante");
+           
+
+             if(contador1 == 0){
+                  
+                  //remove la clase si la tiene
+                  caja1.classList.remove("translada__cajaMasAdelante");
+                  caja1.classList.add("translada__cajaAdelante");
+                  
+                  
+                  
+                  contador1++;
+                  
+                  // este if casi es inutil
+                  if (contador2 != 0) {
+                      caja2.classList.remove("translada__cajaAdelante");
+                  	  caja2.classList.add("translada__cajaMasAdelante");
+                      
+                      
+                  }
+
+              }else{
+
+                //remove la clase si la tiene
+                caja1.classList.remove("translada__cajaAdelante");
+                caja1.classList.add("translada__cajaMasAdelante");
+                 
+                //remove la clase si la tiene
+                caja2.classList.remove("translada__cajaMasAdelante");
+                caja2.classList.add("translada__cajaAdelante");
+
+                contador1 = 0;
+                contador2++;
+                
+                
+                   
+              }
+
+                
+              
+                
+                 
+        });
+
+
+        boton2.addEventListener("click",function(){
+
+                
+                 
+             
+             if(contador1 == 0){
+                  
+                  //remove la clase si la tiene
+                  caja1.classList.remove("translada__cajaMasAdelante");
+                  caja1.classList.add("translada__cajaAdelante");
+                  caja1.classList.add("reversa");
+                  
+                  
+                  
+                  contador1++;
+                  
+                  // este if casi es inutil
+                  if (contador2 != 0) {
+                      caja2.classList.remove("translada__cajaAdelante");
+                      caja2.classList.add("translada__cajaMasAdelante");
+                      caja2.classList.add("reversa");
+                      
+                      
+                  }
+
+              }else{
+
+                //remove la clase si la tiene
+                caja1.classList.remove("translada__cajaAdelante");
+                caja1.classList.add("translada__cajaAdelante2");
+                // caja1.classList.add("reversa");
+                 
+                
+
+
+
+                
+
+                contador1 = 0;
+                contador2++;
+                
+                
+                   
+              }
+
+
+
+        });
+
+
+
+
+                
+        
+
+  </script>
+	
+</body>
+</html>
