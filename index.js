@@ -1,1 +1,39 @@
-let boton=document.querySelector(".fa-bars"),menu=document.querySelector(".nav__list"),desplega_barra=!1;boton.addEventListener("click",function(){desplega_barra=desplega_barra?!(menu.style.transform="translateY(-800px)"):(menu.style.transform="translateY(70px)",!0)}),addEventListener("resize",function(){800<=document.documentElement.clientWidth?menu.style.transform="translateY(0px)":(menu.style.transform="translateY(-800px)",desplega_barra=!1)});
+let boton = document.querySelector(".fa-bars");
+let menu = document.querySelector(".nav__list");
+
+
+let desplega_barra = false;
+boton.addEventListener("click", function () {
+
+    if (!desplega_barra) {
+
+        menu.style.transform = "translateY(70px)";
+        desplega_barra = true;
+
+    } else {
+
+        menu.style.transform = "translateY(-370px)";
+        desplega_barra = false;
+    }
+
+});
+
+addEventListener("resize",function(){
+
+
+    let width = document.documentElement.clientWidth;
+    
+    if(width >= 840){
+       menu.style.transform = "translateY(0px)"
+    }else{
+ 
+       menu.style.transform = "translateY(-370px)";
+       desplega_barra = false;
+ 
+    }
+ 
+ });
+
+
+
+
